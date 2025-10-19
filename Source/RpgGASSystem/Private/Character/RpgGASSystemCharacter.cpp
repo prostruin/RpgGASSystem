@@ -62,7 +62,7 @@ ARpgGASSystemCharacter::ARpgGASSystemCharacter()
 
 USceneComponent* ARpgGASSystemCharacter::GetDynamicSpawnPoint_Implementation()
 {
-	return IRPGAbilitySystemInterface::GetDynamicSpawnPoint_Implementation();
+	return DynamicProjectileSpawnPoint;
 }
 
 void ARpgGASSystemCharacter::PossessedBy(AController* NewController)
