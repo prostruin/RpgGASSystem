@@ -5,6 +5,7 @@
 #include "CoreMinimal.h"
 #include "AbilitySystemInterface.h"
 #include "CharacterBase.h"
+#include "Interfaces/RPGAbilitySystemInterface.h"
 #include "Logging/LogMacros.h"
 #include "RpgGASSystemCharacter.generated.h"
 
@@ -19,7 +20,7 @@ struct FInputActionValue;
 DECLARE_LOG_CATEGORY_EXTERN(LogTemplateCharacter, Log, All);
 
 UCLASS(config=Game)
-class ARpgGASSystemCharacter : public ACharacterBase, public IAbilitySystemInterface
+class ARpgGASSystemCharacter : public ACharacterBase, public IAbilitySystemInterface, public IRPGAbilitySystemInterface
 {
 	GENERATED_BODY()
 
@@ -50,6 +51,9 @@ class ARpgGASSystemCharacter : public ACharacterBase, public IAbilitySystemInter
 public:
 	ARpgGASSystemCharacter();
 
+	/* Implement RPGAbilitySystemInterface */
+	virtual USceneComponent* GetDynamicSpawnPoint_Implementation() override;
+
 	virtual void PossessedBy(AController* NewController) override;
 	virtual void OnRep_PlayerState() override;
 
@@ -73,6 +77,9 @@ protected:
 	
 	
 private:
+
+	UPROPERTY(VisibleAnywhere, meta = (AllowPrivateAccess = true))
+	TObjectPtr<USceneComponent> DynamicProjectileSpawnPoint;
 
 	UPROPERTY(BlueprintReadOnly, meta = (AllowPrivateAccess = true))
 	TObjectPtr<URPGAbilitySystemComponent> RPGAbilitySystemComp;
