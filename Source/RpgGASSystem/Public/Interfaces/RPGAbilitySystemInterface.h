@@ -3,6 +3,7 @@
 #pragma once
 
 #include "CoreMinimal.h"
+#include "GameplayTagContainer.h"
 #include "UObject/Interface.h"
 #include "RPGAbilitySystemInterface.generated.h"
 
@@ -24,6 +25,9 @@ public:
 
 	UFUNCTION(BlueprintNativeEvent, BlueprintCallable)
 	USceneComponent* GetDynamicSpawnPoint();
+
+	UFUNCTION(BlueprintNativeEvent, BlueprintCallable)
+	void SetDynamicProjectile(const FGameplayTag& ProjectileTag);
 
 	
 };
