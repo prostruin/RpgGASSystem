@@ -3,6 +3,7 @@
 #pragma once
 
 #include "CoreMinimal.h"
+#include "RPGDamageAbility.h"
 #include "AbilitySystem/RPGAbilityTypes.h"
 #include "AbilitySystem/Abilities/RPGGameplayAbility.h"
 #include "ProjectileAbility.generated.h"
@@ -11,7 +12,7 @@
  * 
  */
 UCLASS()
-class RPGGASSYSTEM_API UProjectileAbility : public URPGGameplayAbility
+class RPGGASSYSTEM_API UProjectileAbility : public URPGDamageAbility
 {
 	GENERATED_BODY()
 
